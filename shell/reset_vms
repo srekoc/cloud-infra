@@ -1,0 +1,7 @@
+curl -k -X POST -H "vmware-api-session-id: 25313996256fc6ffed2885319051fd9c" "https://vm-mgr01.infra.dc.srekoc.net/rest/vcenter/vm/vm-32268/power/reset"
+curl -k -X POST -H "vmware-api-session-id: d31f78e40fa983aeb104045962d2d579" "https://vm-mgr01.infra.dc.srekoc.net/rest/vcenter/vm/vm-32270/power/reset"
+curl -k -X POST -H "vmware-api-session-id: 977a781ee2f798a4df5e239c6ded6813" "https://vm-mgr01.infra.dc.srekoc.net/rest/vcenter/vm/vm-32269/power/reset"
+curl -k -X POST -H "vmware-api-session-id: 98b16a11f32c5134ba6830b76616a31e" "https://vm-mgr01.infra.dc.srekoc.net/rest/vcenter/vm/vm-32268/power/reset"
+2022-01-25-22:55:39: curl -k -X POST -H "vmware-api-session-id: 3f062266e796dd470a13d565120164ce" "https://vm-mgr01.infra.dc.srekoc.net/rest/vcenter/vm/vm-32279/power/reset"
+2022-01-25-22:55:40: curl -k -X POST -H "vmware-api-session-id: 12d8e8d7840fb80ab113369b7ad494cd" "https://vm-mgr01.infra.dc.srekoc.net/rest/vcenter/vm/vm-32278/power/reset"
+2022-01-25-22:55:40: curl -k -X POST -H "vmware-api-session-id: 33a53f828a380f9fface0ad0ea8ecf63" "https://vm-mgr01.infra.dc.srekoc.net/rest/vcenter/vm/vm-32277/power/reset"

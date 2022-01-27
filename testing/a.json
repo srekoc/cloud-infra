@@ -1,0 +1,45 @@
+{
+    "items": { 
+    "name": "sre-jenkins04.dc.srekoc.net",
+    "commitMsg":"creating verdad item",
+    "tags": {
+      "provisioning_type": {
+        "values": [
+          "terraform"
+        ]
+      },
+      "is": {
+        "values": [
+          "hw-VM-2D",
+          "nz-infra-oos.dc.srekoc.net"
+        ]
+      },
+      "network.dnsname.1": {
+        "values": [
+          "sre-jenkins04"
+        ]
+      },
+      "inventory.scope": {
+        "values": [
+          "oos"
+        ]
+      },
+      "hardware.mac.1": {
+        "values": [
+          "00:50:56:b0:6a:68"
+        ]
+      },
+      "network.hostname.1": {
+        "values": [
+          "sre-jenkins04.dc.srekoc.net"
+        ]
+      },
+      "network.ip.1": {
+        "values": [
+          "10.81.7.36"
+        ]
+      }
+    }
+ } 
+}
+

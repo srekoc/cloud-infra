@@ -1,0 +1,25 @@
+2022-01-25-22:50:07: vm_name: sre-jenkins01.dc.srekoc.net
+2022-01-25-22:50:07: ip_address: 10.81.7.33
+2022-01-25-22:50:07: mac_address: 00:50:56:b0:49:e5
+2022-01-25-22:50:07: inside (fn) - check_if_verdad_item_exists
+2022-01-25-22:50:07: inside (fn) - get_vsphere_session_id
+2022-01-25-22:50:08: inside (fn) - get_vm_id_from_vm_name
+2022-01-25-22:50:09: curl -k -X POST -H "vmware-api-session-id: c4834f4c9e84165292dde62068c260ab" "https://vm-mgr01.infra.dc.srekoc.net/rest/vcenter/vm/vm-32274/power/reset"
+2022-01-25-22:55:37: vm_name: sre-jenkins03.dc.srekoc.net
+2022-01-25-22:55:37: ip_address: 10.81.7.35
+2022-01-25-22:55:37: mac_address: 00:50:56:b0:0b:5d
+2022-01-25-22:55:37: inside (fn) - check_if_verdad_item_exists
+2022-01-25-22:55:37: inside (fn) - get_vsphere_session_id
+2022-01-25-22:55:38: inside (fn) - get_vm_id_from_vm_name
+2022-01-25-22:55:37: vm_name: sre-jenkins01.dc.srekoc.net
+2022-01-25-22:55:37: ip_address: 10.81.7.33
+2022-01-25-22:55:37: mac_address: 00:50:56:b0:0c:7f
+2022-01-25-22:55:37: inside (fn) - check_if_verdad_item_exists
+2022-01-25-22:55:37: inside (fn) - get_vsphere_session_id
+2022-01-25-22:55:38: inside (fn) - get_vm_id_from_vm_name
+2022-01-25-22:55:37: vm_name: sre-jenkins02.dc.srekoc.net
+2022-01-25-22:55:37: ip_address: 10.81.7.34
+2022-01-25-22:55:37: mac_address: 00:50:56:b0:7f:db
+2022-01-25-22:55:37: inside (fn) - check_if_verdad_item_exists
+2022-01-25-22:55:37: inside (fn) - get_vsphere_session_id
+2022-01-25-22:55:38: inside (fn) - get_vm_id_from_vm_name

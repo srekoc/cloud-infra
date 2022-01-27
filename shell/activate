@@ -1,0 +1,71 @@
+#!/usr/bin/bash
+
+cat >>/etc/yum.conf <<EOF1
+proxy=http://proxy.vip-snat.dc.srekoc.net:3128
+EOF1
+
+cat >>/etc/yum.repos.d/jenkins.repo <<EOF1
+[jenkins]
+name=Jenkins
+baseurl=http://pkg.jenkins.io/redhat
+gpgcheck=1
+EOF1
+
+cat >>/etc/yum.repos.d/chef.repo <<EOF1
+[chef-stable]
+name=chef-channel
+baseurl=https://packages.chef.io/repos/yum/stable/el/7/\$basearch/
+gpgcheck=1
+enabled=1
+EOF1
+
+cat >>/etc/yum.repos.d/elk.repo <<EOF1
+[elastic-7.x]
+name=Elastic repository for 7.x packages
+baseurl=https://artifacts.elastic.co/packages/7.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+EOF1
+
+############################################
+# install open-vm-tools
+############################################
+echo "Installing VM Tools ..."
+yum install -y open-vm-tools
+systemctl enable vmtoolsd
+systemctl start vmtoolsd
+
+#echo "Installing cloud-init tools..."
+#sudo yum install -y cloud-init
+
+echo "Updating squid proxy settings..."
+export http_proxy=http://proxy.vip-snat.dc.srekoc.net:3128
+export https_proxy=http://proxy.vip-snat.dc.srekoc.net:3128
+
+echo "Installing Chef/Jenkins/Elk ..."
+rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+rpm --import https://packages.chef.io/chef.asc
+rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
+
+yum install -y chef
+yum install -y epel-release
+yum install -y jenkins java-1.8.0-openjdk-devel
+
+echo "Updating sshd configuration..."
+
+curl -s -k "https://spacewalk01.dc.srekoc.net/kick7/Packages/sshkeys-20180920T2117-1.x86_64.rpm" -o sshkeys-20180920T2117-1.x86_64.rpm
+
+yum localinstall -y configgen-20180727T0328-1.x86_64.rpm 
+yum localinstall -y sshkeys-20180920T2117-1.x86_64.rpm 
+ln -s  /usr/bin/perl /usr/local/bin/perl
+mkdir -p /var/dev/log/
+yum install -y perl-LWP-Protocol-https rsync
+/etc/init.d/dev_sshkeys stop
+/etc/init.d/dev_sshkeys start
+
+chmod go-r /etc/ssh/*
+service sshd restart
+

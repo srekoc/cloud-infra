@@ -1,0 +1,82 @@
+{
+  "builders": [
+    {
+      "CPUs": "{{user `vm-cpu-num`}}",
+      "RAM": "{{user `vm-mem-size`}}",
+      "RAM_reserve_all": false,
+      "boot_command": [
+        "<esc><wait>",
+        "linux ks=hd:fd0:/ks.cfg<enter>"
+      ],
+      "boot_order": "disk,cdrom,floppy",
+      "boot_wait": "10s",
+      "ip_wait_timeout": "15m",
+      "cluster": "{{user `vsphere-cluster`}}",
+      "convert_to_template": true,
+      "datacenter": "{{user `vsphere-datacenter`}}",
+      "datastore": "{{user `vsphere-datastore`}}",
+      "disk_controller_type": "pvscsi",
+      "floppy_files": [
+        "ks.cfg"
+      ],
+      "guest_os_type": "{{user `vm-guest-id`}}",
+      "insecure_connection": "true",
+      "iso_paths": [
+        "{{user `iso_url`}}"
+      ],
+      "network_adapters": [
+        {
+          "network": "{{user `vsphere-network`}}",
+          "network_card": "vmxnet3",
+          "mac_address": "00:50:56:b0:f8:8d"
+        }
+      ],
+      "notes": "Build via Packer",
+      "password": "{{user `vsphere-password`}}",
+      "ssh_password": "server",
+      "ssh_username": "root",
+      "storage": [
+        {
+          "disk_size": "{{user `vm-first-disk-size`}}",
+          "disk_thin_provisioned": true
+        },
+        {
+          "disk_size": "{{user `vm-second-disk-size`}}",
+          "disk_thin_provisioned": true
+        }
+      ],
+      "type": "vsphere-iso",
+      "username": "{{user `vsphere-user`}}",
+      "vcenter_server": "{{user `vsphere-server`}}",
+      "vm_name": "{{user `vm-template-name`}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "inline": [
+        "sudo yum install -y cloud-init"
+      ],
+      "type": "shell"
+    },
+    {
+      "scripts": [
+        "../shell/activate"
+      ],
+      "type": "shell"
+    }
+],
+  "variables": {
+    "iso_url": "[dc_cluster01_ssd03] CentOS-7-x86_64-Minimal-2003.iso",
+    "vm-guest-id": "centos7_64Guest",
+    "vm-cpu-num": "1",
+    "vm-first-disk-size": "25600",
+    "vm-second-disk-size": "60000",
+    "vm-mem-size": "1024",
+    "vm-template-name": "gold-template.dc.srekoc.net",
+    "vsphere-cluster": "dc-CLUSTER01",
+    "vsphere-datacenter": "dc",
+    "vsphere-datastore": "dc_cluster01_ssd03",
+    "vsphere-network": "DV_PG_OOS_INFRA1",
+    "vsphere-server": "vm-mgr01.infra.dc.srekoc.net/"
+  }
+}
