@@ -28,8 +28,8 @@ https://intranet.dev.com/netops/networking/ip-assignments/srekoc/index.html
 
 ## credentials
 The credentials are needed for vsphere and verdad to get the RESTful apis right. 
-- vsphere 
-- verdad 
+- vsphere (https://registry.terraform.io/providers/hashicorp/vsphere/latest/docs)
+- verdad (http://verdad.sourceforge.net/)
 
 ## variables
 The defaults for the template created are given in the table. If you would want to do things differently these variables must be updated for packer and terraform to pick up.
@@ -38,7 +38,7 @@ The variables are relevant inside of packer and terraform code. You can see the 
 
 | variable name  | data type | description | defaults
 | ------------- | ------------- | ------------- | ------------- |
-| vm_ips | string | IP addresses for assigning to vms, to procure IPs use IPAM tool | vm_ips = python{   "0" = "10.81.7.33" "1" = "10.81.7.34" "2" = "10.81.7.35"} |
+| vm_ips | string | IP addresses for assigning to vms, to procure IPs use IPAM tool | vm_ips = {   "0" = "10.81.7.33" "1" = "10.81.7.34" "2" = "10.81.7.35"} |
 | iso_url | string  | iso_url (string) - A URL to the ISO containing the installation image or virtual hard drive (VHD or VHDX) file to clone.|[dc_cluster01_ssd03] CentOS-7-x86_64-Minimal-2003.iso|
 | vm-cpu-num  | string | CPUs (int32) - Number of CPU cores. | 1 |
 | vm-first-disk-size | string | primary or OS disk size | 25600 (25GB) |
